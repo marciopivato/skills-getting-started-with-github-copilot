@@ -15,8 +15,16 @@ class JsonPatronRepository(IPatronRepository):
         return None
 
     def search_patrons(self, search_input: str) -> List[Patron]:
-        results = [p for p in self._json_data.patrons if search_input.lower() in p.name.lower()]
-        return sorted(results, key=lambda p: p.name)
+        results = []
+        for p in self._json_data.patrons:
+            if search_input.lower() in p.name.lower():
+                results.append(p)
+        n = len(results)
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                if results[j].name > results[j + 1].name:
+                    results[j], results[j + 1] = results[j + 1], results[j]
+        return results
 
     def update_patron(self, patron: Patron) -> None:
         for idx in range(len(self._json_data.patrons)):
