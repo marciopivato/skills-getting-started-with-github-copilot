@@ -76,15 +76,37 @@ section h3 {
 
 .participants-list {
   margin-top: 10px;
-  padding-left: 20px;
-  list-style-type: disc;
+  padding-left: 0;
 }
 
-.participants-list li {
+.participants-list .participant-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 5px;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.participants-list .participant-item span {
   font-size: 14px;
   color: #555;
   font-style: italic;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #c62828;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 5px;
+  transition: color 0.2s;
+}
+
+.delete-btn:hover {
+  color: #b71c1c;
 }
 
 .form-group {
